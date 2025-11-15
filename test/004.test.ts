@@ -64,8 +64,6 @@ describe('non linear config (getConfig)', () => {
 	const conf = new vvConfigJsonc(SConf)
 	const resConf = conf.getConfig(jsonc.join('\n'))
 
-	console.log(resConf)
-
 	test('text', () => {
 		expect(resConf.text).toBe(text)
 	})

@@ -38,13 +38,13 @@ export class vvConfigJsonc<S extends TSchema> {
 			}
 			return true
 		}
-		return union.find(fits) ?? union[0]
+		return (union.find(fits) ?? union[0]) as TSchema
 	}
 
 	private pickSchemaVariantByObject(obj: unknown): TSchema {
 		const union = (this.rootSchema as any).anyOf as TSchema[] | undefined
 		if (!union) return this.rootSchema
-		if (!isObj(obj)) return union[0]
+		if (!isObj(obj)) return union[0] as TSchema
 		const score = (schema: any) => {
 			let points = 0
 			const walk = (s: any, cur: any): void => {
@@ -73,7 +73,7 @@ export class vvConfigJsonc<S extends TSchema> {
 				best = s
 			}
 		}
-		return best
+		return best as TSchema
 	}
 
 	private pickNestedUnion(anyOf: TSchema[], relVariants: { path: JSONPath; value: unknown }[] | undefined, currentSegment: unknown): TSchema {
@@ -127,9 +127,9 @@ export class vvConfigJsonc<S extends TSchema> {
 					best = s
 				}
 			}
-			return best
+			return best as TSchema
 		}
-		return anyOf[0]
+		return anyOf[0] as TSchema
 	}
 
 	private extractSkeletonAndComments(
