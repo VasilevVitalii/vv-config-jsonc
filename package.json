@@ -1,11 +1,21 @@
 {
     "name": "vv-config-jsonc",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "Config manager (JSON with comments)",
-    "main": "dist/index.js",
+    "main": "dist/src/index.js",
+    "types": "dist/src/index.d.ts",
+    "exports": {
+        ".": {
+            "types": "./dist/src/index.d.ts",
+            "import": "./dist/src/index.js"
+        }
+    },
+    "files": [
+        "dist"
+    ],
     "scripts": {
         "build": "tsc",
-        "test": "tsc && jest"
+        "test": "npm run build && node --experimental-vm-modules node_modules/jest/bin/jest.js"
     },
     "repository": {
         "type": "git",

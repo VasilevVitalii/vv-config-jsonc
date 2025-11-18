@@ -1,2 +1,5 @@
-export const preset = 'ts-jest'
-export const testEnvironment = 'node'
+export default {
+    testEnvironment: 'node',
+    testMatch: ['**/dist/test/**/*.test.js'],
+    transform: {},
+}
