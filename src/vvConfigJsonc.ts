@@ -1,10 +1,10 @@
 import { parse as jsoncParse, modify, applyEdits, format, type JSONPath } from 'jsonc-parser'
 import type { TSchema, Static } from '@sinclair/typebox'
 import { TypeCompiler } from '@sinclair/typebox/compiler'
-import { toPathArray } from './toPathArray'
-import { isObj } from './isObj'
-import { insertLineCommentBeforeProperty, removeLineCommentBeforeProperty } from './lineCommentBeforeProperty'
-import { stripOptionalNullsForValidation } from './stripOptionalNullsForValidation'
+import { toPathArray } from './toPathArray.js'
+import { isObj } from './isObj.js'
+import { insertLineCommentBeforeProperty, removeLineCommentBeforeProperty } from './lineCommentBeforeProperty.js'
+import { stripOptionalNullsForValidation } from './stripOptionalNullsForValidation.js'
 
 const FORMAT = { insertSpaces: true, tabSize: 4, eol: '\n' as const }
 

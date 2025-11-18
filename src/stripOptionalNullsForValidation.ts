@@ -1,4 +1,4 @@
-import { isObj } from "./isObj"
+import { isObj } from "./isObj.js"
 
 export function stripOptionalNullsForValidation(obj: any, schema: any): any {
 	// Примитивы/некорректные — возвращаем как есть

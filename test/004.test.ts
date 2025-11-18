@@ -1,5 +1,5 @@
-import { Type } from '../src'
-import { vvConfigJsonc } from '../src'
+import { Type } from '../src/index.js'
+import { vvConfigJsonc } from '../src/index.js'
 
 enum EEnum {
 	oracle = 'oracle',
