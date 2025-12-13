@@ -204,7 +204,23 @@ export class vvConfigJsonc<S extends TSchema> {
 					continue
 				}
 				if (prop && prop.type === 'array') {
-					out[key] = null
+					const items = prop.items
+					if (items && items.type === 'object') {
+						const itemSkeleton = this.extractSkeletonAndComments(items, `${dot}.0`, variants, undefined)
+						if (itemSkeleton.skeleton !== undefined && Object.keys(itemSkeleton.skeleton).length > 0) {
+							const hasNonNullValue = Object.values(itemSkeleton.skeleton).some(v => v !== null)
+							if (hasNonNullValue) {
+								out[key] = [itemSkeleton.skeleton]
+								Object.assign(comments, itemSkeleton.comments)
+							} else {
+								out[key] = []
+							}
+						} else {
+							out[key] = []
+						}
+					} else {
+						out[key] = []
+					}
 					hasAny = true
 					addC(dot, prop)
 					continue
